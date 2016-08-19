@@ -49,7 +49,7 @@ public class MainActivity extends Activity {
             public void onClick(View view) {
                 String str = checkFields();
                 if(str.equals("")){
-                    //calcular();
+                    calcular();
                 } else{
                     // ------------
                     LinearLayout layout=new LinearLayout(getBaseContext());
@@ -73,6 +73,28 @@ public class MainActivity extends Activity {
                 }
             }
         });
+    }
+
+    private void calcular() {
+        double quantidadeA = 0.0, quantidadeB = 0.0, valorA = 0.0, valorB = 0.0;
+        EditText edit = (EditText) findViewById(R.id.qtdeA);
+        quantidadeA = Double.parseDouble(edit.getText().toString());
+        edit = (EditText) findViewById(R.id.qtdeB);
+        quantidadeB = Double.parseDouble(edit.getText().toString());
+        edit = (EditText) findViewById(R.id.valorA);
+        valorA = Double.parseDouble(edit.getText().toString());
+        edit = (EditText) findViewById(R.id.valorB);
+        valorB = Double.parseDouble(edit.getText().toString());
+
+        double resultadoA = valorA/quantidadeA, resultadoB = valorB/quantidadeB;
+
+        if(resultadoA == resultadoB){
+            System.out.println("RESULTADO >>> mesma coisa...");
+        }else if(resultadoA > resultadoB){
+            System.out.println("RESULTADO >>> A ta mais caro, compra B...");
+        }else{ // resultadoB > resultadoA
+            System.out.println("RESULTADO >>> B ta mais caro, compra A...");
+        }
     }
 
     private String checkFields() {
